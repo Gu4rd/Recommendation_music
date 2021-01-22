@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to DevelopJSG</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='bootstrap-4.5.2/css/bootstrap.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='Assessment.css')}}">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <style media="screen">
+    body{
+        background: url("{{url_for('static', filename='black_background.jpg')}}") no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    #content{
+      position: absolute;
+      height: 500px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      width: 1000px;
+      margin: -250px 0px 0px -500px;
+      top: 60%;
+      left: 50%;
+    }
+  </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">
+            <img src="{{url_for('static', filename='logo.png')}}" width="30" height="30" class="d-inline-block align-top" alt=""> Reco-M
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto text-danger" style="font-weight: bold;">
+              This is just an impractical prototype.
+            </ul>
+            <button class="btn btn-secondary" type="button" name="button" onclick="location.href='/login'">Login</button> &nbsp&nbsp&nbsp&nbsp
+            <button class="btn btn-secondary" type="button" name="button" onclick="location.href='/signUp'">Sign Up</button>
+        </div>
+    </nav>
+
+
+    <div class="container" style="min-width: 500px;">
+      <div id="content" class="border border-light rounded-lg">
+        <p style="text-align:center; font-size:40px;"class="text-white text-monospace">Music Recommendations Only for You</p>
+        <table class="table" style="color: aqua; font-weight: bold;">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Song name</th>
+              <th scope="col">Browse Youtube</th>
+              <th scope="col">Assessment</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for ml in myLists %}
+            <tr>
+              <th scope="row">*</th>
+              <td>{{ml}}</td>
+              <td><button type="button" class="btn btn-light" onclick="location.href='https://www.youtube.com/results?search_query={{ml}}'">LINK</button></td>
+              <td>
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#star_rating">Assessment</button>
+
+                <div class="modal fade" id="star_rating" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Assessment</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="rating rating2"><!--
+    		            --><a href="#5" title="Give 5 stars">★</a><!--
+    		            --><a href="#4" title="Give 4 stars">★</a><!--
+    		            --><a href="#3" title="Give 3 stars">★</a><!--
+    		            --><a href="#2" title="Give 2 stars">★</a><!--
+    		            --><a href="#1" title="Give 1 star">★</a>
+    	                </div>
+                      </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Okay</button>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}  
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

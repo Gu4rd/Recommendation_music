@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap-4.5.2/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='signUp.css')}}">
+    <script type="text/javascript" href="{{url_for('static', filename='signUp.js')}}"></script>
+  </head>
+  <body>
+    <div class="user">
+        <header class="user__header">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt="" />
+            <h1 class="user__title">Login</h1>
+        </header>
+
+        <form class="form" method="POST" action="/login">
+            <div class="form__group">
+                <input id="userid" name="userid" type="text" placeholder="ID" class="form__input" />
+            </div>
+
+            <div class="form__group">
+                <input id="password" name="password" type="password" placeholder="Password" class="form__input" />
+            </div>
+
+            <button id="text" class="btn" type="submit" onclick="this.innerHTML='Reading your data...'">Login</button>
+        </form>
+    </div>
+  </body>
+</html>
